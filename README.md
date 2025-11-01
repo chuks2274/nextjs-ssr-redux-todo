@@ -21,8 +21,8 @@ CSS
 Nanoid for unique todo IDs
 
 Clone the repository
-git clone <your-repo-url>
-cd next-ssr-todo
+git clone <https://github.com/chuks2274/nextjs-ssr-redux-todo.git>
+cd nextjs-ssr-redux-todo
 npm install
 npm run dev
 Open http://localhost:3000
