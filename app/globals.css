@@ -1,42 +1,317 @@
+/* ==========================
+   Global Variables & Themes
+========================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f7f7fb;          /* Default background color */
+  --text: #111;            /* Default text color */
+  --card: #fff;            /* Default card/background for components */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Dark theme variables */
+[data-theme='dark'] {
+  --bg: #121212;           /* Dark background for dark mode */
+  --text: #eee;            /* Light text for dark mode */
+  --card: #1e1e1e;         /* Card background in dark mode */
+}
+
+/* Blue theme variables */
+[data-theme='blue'] {
+  --bg: #e0f7ff;           /* Light blue background */
+  --text: #003366;         /* Dark blue text */
+  --card: #ccefff;         /* Card background for blue theme */
+}
+
+/* ==========================
+   Global Body Styles
+========================== */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; /* Fallback system fonts */
+  margin: 0;               /* Remove default browser margin */
+  padding: 0;              /* Remove default browser padding */
+  background-color: var(--bg); /* Use theme-based background */
+  color: var(--text);      /* Use theme-based text color */
+  transition: background 0.3s, color 0.3s; /* Smooth transition when switching themes */
+}
+
+/* ==========================
+   Container
+========================== */
+.container {
+  max-width: 700px;                 /* Limit container width */
+  margin: 2rem auto;                /* Center container horizontally, with vertical spacing */
+  background: var(--card);          /* Card-like background */
+  padding: 1.5rem;                  /* Inner spacing */
+  border-radius: 8px;               /* Rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* ==========================
+   AddTodo Component
+========================== */
+.add-todo {
+  max-width: 600px;                 /* Limit width */
+  margin: 2rem auto;                /* Center horizontally with vertical spacing */
+  padding: 1.5rem;                  /* Inner spacing */
+  border-radius: 12px;              /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  background-color: var(--card);    /* Card background color */
+  color: var(--text);               /* Text color */
+}
+
+/* Header of AddTodo */
+.add-todo-header {
+  display: flex;                    /* Flex layout */
+  justify-content: flex-end;        /* Place header items at the right */
+  align-items: center;              /* Vertically align items */
+  margin-bottom: 1.5rem;            /* Space below header */
+}
+
+.add-todo-header h2 {
+  margin: 0;                        /* Remove default heading margin */
+  font-size: 1.25rem;               /* Slightly larger text */
+  font-weight: 600;                 /* Semi-bold */
+}
+
+/* Theme toggle button */
+.theme-button {
+  padding: 0.4rem 0.8rem;           /* Inner spacing */
+  border-radius: 8px;               /* Rounded button */
+  border: none;                     /* Remove default border */
+  cursor: pointer;                  /* Pointer on hover */
+  font-weight: bold;                /* Bold text */
+  transition: all 0.2s ease;        /* Smooth hover/active transitions */
+}
+
+.theme-button.light { 
+  background-color: #f0f0f0;        /* Light theme background */
+  color: #000;                       /* Dark text */
+}
+.theme-button.dark { 
+  background-color: #333;            /* Dark theme background */
+  color: #fff;                       /* Light text */
+}
+.theme-button.blue { 
+  background-color: #007bff;         /* Blue theme background */
+  color: #fff;                       /* White text */
+}
+.theme-button:hover { 
+  opacity: 0.8;                      /* Slight transparency on hover */
+}
+
+/* AddTodo form */
+.add-todo-form {
+  display: flex;                    /* Flex layout */
+  flex-direction: column;           /* Stack inputs vertically */
+  gap: 8px;                         /* Space between inputs/buttons */
+  width: 100%;                      /* Full width */
+  max-width: 400px;                 /* Limit width */
+  margin: 16px auto;                /* Center horizontally, with spacing */
+  align-items: center;              /* Center child elements horizontally */
+}
+
+.add-todo-input {
+  width: 100%;                      /* Full width input */
+  padding: 8px;                     /* Inner spacing */
+  text-align: left;                 /* Text aligned left */
+  box-sizing: border-box;           /* Include padding in width calculation */
+  border-radius: 8px;               /* Rounded corners */
+  border: 1px solid #ccc;           /* Light gray border */
+  font-size: 1rem;                  /* Default font size */
+  outline: none;                    /* Remove default outline */
+  transition: all 0.2s ease;        /* Smooth focus transition */
+}
+
+.add-todo-input:focus {
+  border-color: #007bff;            /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow effect */
+}
+
+/* AddTodo buttons */
+.add-todo-buttons {
+  display: flex;                    /* Flex layout */
+  justify-content: center;          /* Center buttons */
+  gap: 8px;                         /* Space between buttons */
+  flex-wrap: wrap;                  /* Wrap buttons if too many */
+}
+
+.add-button,
+.clear-button {
+  flex: 0 0 auto;                   /* Prevent buttons from growing */
+  padding: 4px 8px;                 /* Inner spacing */
+  min-width: 0;                      /* Minimum width 0 for flex */
+  white-space: nowrap;               /* Prevent text wrapping */
+  cursor: pointer;                  /* Pointer on hover */
+  font-weight: bold;                /* Bold text */
+  border: none;                     /* Remove border */
+  border-radius: 8px;               /* Rounded corners */
+  font-size: 0.9rem;                /* Slightly smaller text */
+  transition: all 0.2s ease;        /* Smooth hover transition */
+  color: #fff;                       /* White text */
+}
+
+.add-button { 
+  background-color: #28a745;        /* Green button */
+}
+.add-button:hover { 
+  opacity: 0.85;                    /* Slight fade on hover */
+}
+.clear-button { 
+  background-color: #dc3545;        /* Red button */
+}
+.clear-button:hover { 
+  opacity: 0.85;                    /* Slight fade on hover */
+}
+
+/* Responsive AddTodo buttons for mobile */
+@media (max-width: 480px) {
+  .add-todo-buttons {
+    flex-direction: column;         /* Stack buttons vertically */
+    align-items: stretch;           /* Fill container width */
+  }
+  .add-button,
+  .clear-button {
+    width: 100%;                    /* Full width */
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* ==========================
+   TodoItem Component
+========================== */
+.todo-item {
+  display: flex;                    /* Flex layout for item */
+  justify-content: space-between;   /* Space between text and buttons */
+  align-items: center;              /* Vertically center items */
+  padding: 8px;                     /* Inner spacing */
+  gap: 8px;                         /* Gap between elements */
+  border-bottom: 1px solid #ccc;    /* Separator line */
+  word-break: break-word;           /* Break long words */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.todo-left {
+  display: flex;                    /* Flex layout for left side */
+  align-items: center;              /* Align checkbox and text */
+  gap: 8px;                         /* Space between checkbox and text */
+  flex: 1;                          /* Fill remaining space */
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.todo-edit-input {
+  flex: 1;                          /* Take full available width */
+  padding: 4px 8px;                 /* Inner spacing */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.completed {
+  text-decoration: line-through;    /* Strike-through text */
+  color: #888;                      /* Gray color for completed */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Actions buttons (edit, save, delete) */
+.todo-actions {
+  display: flex;                    /* Horizontal layout */
+  gap: 8px;                         /* Space between buttons */
+  flex-shrink: 0;                   /* Prevent shrinking */
+}
+
+.todo-actions button {
+  padding: 4px 8px;                 /* Inner spacing */
+  cursor: pointer;                  /* Pointer on hover */
+  border-radius: 8px;               /* Rounded corners */
+  font-weight: 600;                 /* Semi-bold */
+  font-size: 0.9rem;                /* Slightly smaller text */
+  transition: all 0.2s ease;        /* Smooth hover/active effects */
+}
+
+.todo-actions button.save { 
+  background-color: #28a745;        /* Green save button */
+  color: #fff;                       /* White text */
+}
+.todo-actions button.edit {
+  background-color: #17a2b8;        /* Blue edit button */
+  color: #fff;                       /* White text */
+}
+.todo-actions button.delete { 
+  background-color: #dc3545;        /* Red delete button */
+  color: #fff;                       /* White text */
+}
+
+.todo-actions button:hover {
+  opacity: 0.85;                    /* Slight fade on hover */
+  transform: translateY(-1px);      /* Move button up slightly */
+}
+
+/* Todo content wrapper (checkbox + text + actions) */
+.todo-content {
+  display: flex;                    /* Flex layout */
+  justify-content: space-between;   /* Space between content and actions */
+  align-items: center;              /* Vertical center */
+  flex-wrap: wrap;                  /* Wrap on small screens */
+}
+
+.todo-label {
+  display: flex;                    /* Flex layout for label + checkbox */
+  align-items: center;              /* Center vertically */
+  gap: 8px;                         /* Space between elements */
+  flex: 1;                          /* Fill available space */
+  min-width: 0;                     /* Fix overflow on small screens */
+}
+
+/* ==========================
+   TodoList Component
+========================== */
+.todo-filters {
+  display: flex;                    /* Horizontal layout for filters */
+  gap: 0.5rem;                      /* Space between filter buttons */
+  margin-bottom: 1rem;              /* Space below filters */
+}
+
+.todo-filters button {
+  padding: 0.5rem 1rem;             /* Inner spacing */
+  border-radius: 8px;               /* Rounded buttons */
+  border: none;                     /* Remove border */
+  cursor: pointer;                  /* Pointer on hover */
+  font-weight: 600;                 /* Semi-bold */
+  font-size: 0.95rem;               /* Slightly smaller text */
+  transition: all 0.2s ease;        /* Smooth hover effects */
+  background-color: #f0f0f0;       /* Light gray button */
+  color: #333;                      /* Dark text */
+}
+
+.todo-filters button:hover {
+  opacity: 0.85;                    /* Fade on hover */
+  transform: translateY(-1px);      /* Slight move up */
+}
+
+.todo-filters button.active {
+  background-color: #007bff;        /* Blue active button */
+  color: #fff;                       /* White text */
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.4); /* Subtle shadow */
+}
+
+/* ==========================
+   Misc / Buttons Defaults
+========================== */
+button {
+  cursor: pointer;                  /* Pointer on hover */
+  border-radius: 4px;               /* Rounded corners */
+  border: 1px solid #ddd;           /* Light border */
+}
+
+button.active {
+  font-weight: bold;                /* Bold text for active button */
+}
+
+/* ==========================
+   Responsive Adjustments
+========================== */
+@media (max-width: 480px) {
+  .todo-item {
+    flex-direction: column;         /* Stack items vertically */
+    align-items: stretch;           /* Fill width */
+  }
+  .todo-actions {
+    justify-content: flex-end;      /* Align actions to right */
+    margin-top: 4px;                /* Space above actions */
+  }
+  .todo-edit-input {
+    width: 100%;                    /* Full width input */
   }
 }

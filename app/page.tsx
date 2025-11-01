@@ -1,66 +1,26 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// "use client" directive tells Next.js that this component should be rendered on the client side.
+// Necessary when using React hooks, state, or any interactivity (like Redux dispatch).
+"use client";
 
-export default function Home() {
+import React from "react"; // Import React (needed for JSX)
+import AddTodo from "../components/AddTodo"; // Import the AddTodo component (form to add new todos)
+import TodoList from "../components/TodoList"; // Import the TodoList component (displays all todos)
+
+
+// HomePage component
+// This is the main page of the app where users can add and view todos.
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    // Container div for styling purposes
+    <div className="container">
+      {/* Page title */}
+      <h1 style={{ flex: 1, textAlign: "center", margin: 0 }}>Next.js SSR + Redux Todo App</h1>
+
+      {/* AddTodo component: form/input where users can add a new todo */}
+      <AddTodo />
+
+      {/* TodoList component: shows all the todos stored in Redux state */}
+      <TodoList />
     </div>
   );
 }
