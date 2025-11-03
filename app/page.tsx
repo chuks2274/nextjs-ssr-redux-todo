@@ -14,7 +14,7 @@ export default function HomePage() {
     // Container div for styling purposes
     <div className="container">
       {/* Page title */}
-      <h1 style={{ flex: 1, textAlign: "center", margin: 0 }}>Next.js SSR + Redux Todo App</h1>
+      <h1 style={{ flex: 1, textAlign: "center", margin: 0 }}>Simple Next.js SSR + Redux Todo App</h1>
 
       {/* AddTodo component: form/input where users can add a new todo */}
       <AddTodo />

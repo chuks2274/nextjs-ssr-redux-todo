@@ -1,4 +1,4 @@
-Next.js SSR + Redux Todo App
+Simple Next.js SSR + Redux Todo App
 
 A simple Todo application built with Next.js (Server-Side Rendering) and Redux Toolkit.
 This project is intended for learning purposes, focusing on understanding how to integrate SSR with Redux in a Next.js app.
